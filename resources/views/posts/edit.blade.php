@@ -19,16 +19,17 @@
             
             {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'put']) !!}
             
-            <h3 class="text-center border-bottom border-dark">感想編集</h3>
-            
-            <div class="form-group mt-3 ml-4 mr-4">
-                {!! Form::label('review', '感想編集') !!}
-                {!! Form::text('review', null, ['class' => 'form-control']) !!}
-            </div>
+                <h3 class="text-center border-bottom border-dark">感想編集</h3>
+                
+                <div class="form-group mt-3 ml-4 mr-4">
+                    {!! Form::label('review', '感想編集') !!}
+                    {!! Form::text('review', null, ['class' => 'form-control']) !!}
+                </div>
+                
+                {!! Form::submit('再投稿', ['class' => 'btn btn-primary']) !!}
             
             {!! Form::close() !!}
             
-            {!! link_to_route('posts.update', '再投稿', ['id' => $post->id]) !!}
         </div>
         
     </div>

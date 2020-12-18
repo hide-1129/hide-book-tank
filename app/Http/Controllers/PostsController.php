@@ -107,7 +107,9 @@ class PostsController extends Controller
             $post->save();
         }
         
-        return back();
+        return view('posts.show', [
+           'post' => $post, 
+        ]);
     }
     
     public function destroy($id) //削除処理

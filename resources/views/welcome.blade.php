@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     @if (Auth::check())
     
         <div class="container">
@@ -30,7 +31,7 @@
 
                     <div class="col-sm-9">
                         <div class="mb-2">
-                        @include('webapi.search')
+                            @include('webapi.search_button')
                         </div>
                         @if (count($posts) > 0)
                             @include('posts.posts', ['posts' => $posts])

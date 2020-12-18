@@ -1,20 +1,9 @@
-<div class="row">
-    <div class="col-9">
-        
-        <form method="GET" action="{{ route('search') }}">
-            <div class="form-inline input-group">
-                <input type"text" name="keyword" class="form-control" />
-                <div class="input-group-append">
-                    
-                    <button type="submit" class="btn-secondary">検索!</button>
-                </div>
-            </div>
-        </form>
-        
-    </div>
-</div>
+@extends('layouts.app')
+
+@section('content')
 
 @if (isset($response) && $response->hits > 0) 
+
     <div class="row">
         <div class="col-12">
             <h2>{{ $keyword }}の検索結果一覧</h2>
@@ -24,6 +13,7 @@
                         <th class="text-center">画像</th>
                         <th class="text-center">商品名</th>
                         <th class="text-center">著者</th>
+                        <th class="text-center">登録ボタン</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -55,5 +45,8 @@
             
         </div>
     </div>
+
 @endif
+
+@endsection
 
