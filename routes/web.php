@@ -1,8 +1,5 @@
 <?php
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PostsController@index');
 
 // ユーザ登録
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
@@ -15,5 +12,23 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
 // ユーザ機能
 Route::group(['middleware' => ['auth']], function () {
+    
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
+    Route::resource('posts', 'PostsController');
+    Route::get('searchs', 'PostsController@search')->name('search');
+    
+    Route::group(['prefix' => 'users/{id}'], function () {
+        Route::get('favorites', 'UsersController@favorites')->name('users.favorites');
+    });
+    
+    //お気に入り機能
+    Route::group(['prefix' => 'posts/{id}'], function () {
+        Route::post('favorite', 'FavoritesController@store')->name('favorite');
+        Route::delete('unfavorite', 'FavoritesController@destroy')->name('unfavorite');
+        Route::get('ranks', 'FavoritesController@ranks')->name('ranks');
+    });    
+
 });
+
+
+
