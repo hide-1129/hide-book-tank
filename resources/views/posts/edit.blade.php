@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+    @include('commons.navbar')
+
     <div class="container">
         <div class="border border-dark d-flex flex-row">
             <img src="{!! $post->book_image !!}"class="img-thumbnail border-dark">

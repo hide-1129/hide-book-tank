@@ -21,6 +21,11 @@ class UsersController extends Controller
     public function show($id) {
         
         $user = User::find($id);
+        
+        if (is_null($user)) { // 存在しないユーザーの場合404エラーにする
+            abort(404);
+        }
+        
         $posts = $user->posts()->orderBy('created_at', 'desc')->paginate(10);
         
         $data = [

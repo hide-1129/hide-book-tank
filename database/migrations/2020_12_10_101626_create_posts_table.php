@@ -14,7 +14,7 @@ class CreatePostsTable extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->string('book_image');
             $table->string('book_title');
-            $table->string('book_author');
+            $table->string('book_author')->nullable();
             $table->string('review');
             $table->timestamps();
             
@@ -27,5 +27,6 @@ class CreatePostsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('posts');
+        
     }
 }

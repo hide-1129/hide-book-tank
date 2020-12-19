@@ -70,6 +70,11 @@ class PostsController extends Controller
     public function store(Request $request) //新規登録処理
     {
         // dd($request); 
+        $this->validate($request, [
+            'book_author' => 'nullable',
+            'review' => 'required', 
+        ]);
+        
         $request->user()->posts()->create([
             'book_image' => $request->book_image,
             'book_title' => $request->book_title,
@@ -93,13 +98,21 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         
+        if (\Auth::id() !== $post->user_id) {
+            return redirect('/');
+        } 
+        
         return view('posts.edit', [
-           'post' => $post, 
+            'post' => $post, 
         ]);
     }
     
     public function update(Request $request, $id) //更新処理
     {
+        $this->validate($request, [
+            'review' => 'required', 
+        ]);
+        
         $post = Post::find($id);
         
         if (\Auth::id() === $post->user_id) {
