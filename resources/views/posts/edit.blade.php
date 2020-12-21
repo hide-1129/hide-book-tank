@@ -2,11 +2,9 @@
 
 @section('content')
 
-    @include('commons.navbar')
-
     <div class="container">
-        <div class="border border-dark d-flex flex-row">
-            <img src="{!! $post->book_image !!}"class="img-thumbnail border-dark">
+        <div class="border border-dark d-flex flex-row mb-2">
+            <img src="{!! $post->book_image !!}"class="img-thumbnail border-dark ml-1 mt-1 mb-1">
     
             <table class="table">
                 <tr>
@@ -18,18 +16,18 @@
             </table>
         </div> 
         
-        <div class="border border-dark">
+        <h3 class="text-center border-bottom border-dark">感想編集</h3>
+        
+        <div class="border border-success mb-2">
             
             {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'put']) !!}
-            
-                <h3 class="text-center border-bottom border-dark">感想編集</h3>
                 
                 <div class="form-group mt-3 ml-4 mr-4">
-                    {!! Form::label('review', '感想編集') !!}
+                    {!! Form::label('review', '編集') !!}
                     {!! Form::text('review', null, ['class' => 'form-control']) !!}
                 </div>
                 
-                {!! Form::submit('再投稿', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('再投稿', ['class' => 'btn btn-primary ml-4 mb-2']) !!}
             
             {!! Form::close() !!}
             

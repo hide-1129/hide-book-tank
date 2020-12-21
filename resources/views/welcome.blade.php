@@ -14,7 +14,7 @@
                             </div>
                             <div class="card-body border">
                                 <div class="border-bottom">
-                                    <h5> {{ Auth::user()->name }}</h5>
+                                    <h5 id="user-name"> {{ Auth::user()->name }}</h5>
                                 </div>
                                 <div class="border-bottom">
                                     <h5>本の登録数: {{ $count_posts }}冊</h5>
@@ -46,7 +46,13 @@
             <img src="{{ asset("324154_m.jpg") }}" class="img-fluid">
             <div class="card-img-overlay text-center">
                 <h1 class="text-success">ようこそ読書タンクへ</h1>
+            
             {!! link_to_route('signup.get', 'Sign up now!', [], ['class' => 'btn btn-lg btn-primary']) !!}
+            
+                <div class="mt-3">
+                    <h2 id="guest_button">ゲストとして簡単にログインできます！！</h2>
+                    {!! link_to_route('login.guest', '簡単ログイン', [], ['class' => 'btn btn-lg btn-primary']) !!}
+                </div>
             </div>
         </div>
     @endif

@@ -9,7 +9,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         
-        @include('webapi.search_button')
+        <p class="ml-2">@include('webapi.search_button')</p>
         
         <div class="collapse navbar-collapse" id="nav-bar">
             <ul class="navbar-nav mr-auto"></ul>
